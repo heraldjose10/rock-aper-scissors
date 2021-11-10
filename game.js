@@ -1,12 +1,13 @@
-function computerPlay() {
+function getComputerSelection() {
 
     const choices = ['rock', 'paper', 'scissors'];
-    let computerChoice = Math.floor(Math.random() * 3);
+    let computerChoice = Math.floor(Math.random() * 3); /*get a random number from 0, 1, 2*/
 
     return (choices[computerChoice]);
 }
 
 function playRound(playerSelection, computerSelection) {
+    // returns a array with result as text, players score & computers score
 
     if (playerSelection === computerSelection) {
         return ['You just tied with computer', 0, 0];
@@ -21,7 +22,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game(maxScore) {
+function playGame(maxScore) {
 
     let playerScore = 0;
     let computerScore = 0;
@@ -29,7 +30,7 @@ function game(maxScore) {
     while (playerScore < maxScore && computerScore < maxScore) {
 
         let playerSelection = prompt('rock, paper or scissors?');
-        let computerSelection = computerPlay();
+        let computerSelection = getComputerSelection();
 
         let result = playRound(playerSelection, computerSelection);
         console.log(result[0]);
@@ -41,4 +42,4 @@ function game(maxScore) {
     playerScore == maxScore ? console.log('You won the GAME!!') : console.log('You failed! Computer won!');
 }
 
-game(3);
+playGame(3);
