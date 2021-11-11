@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'mangabeyregular';
+    src: url('fonts/mangabeyregular-rgqvo-webfont.woff2') format('woff2'), url('fonts/mangabeyregular-rgqvo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color: rgb(223, 255, 205);
+}
+
+body {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: flex-start;
+}
+
+.game-heading {
+    font-family: 'mangabeyregular';
+    color: rgb(14, 143, 148);
+    font-size: 100px;
+    padding: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.main>.player-info {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main>.player-info>label {
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.main>.player-info>input {
+    border-radius: 10px;
+    width: 250px;
+    height: 50px;
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+.main>.player-info>button {
+    font-family: sans-serif;
+    font-size: 30px;
+    background-color: rgb(30, 170, 123);
+    color: blanchedalmond;
+    padding: 10px;
+    margin: 20px 5px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 10px 10px rgb(238, 205, 155);
+}
+
+.main>.player-info>button:active {
+    box-shadow: 5px 5px rgb(238, 205, 155);
+    transform: translateY(4px) translateX(4px);
+}
+
+.main>.player-info>button:hover {
+    background-color: rgb(210, 235, 235);
+    color: black;
+}

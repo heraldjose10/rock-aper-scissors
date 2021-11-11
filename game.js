@@ -29,7 +29,7 @@ function playGame(maxScore) {
 
     while (playerScore < maxScore && computerScore < maxScore) {
 
-        let playerSelection = prompt('rock, paper or scissors?');
+        // let playerSelection = prompt('rock, paper or scissors?');
         let computerSelection = getComputerSelection();
 
         let result = playRound(playerSelection, computerSelection);
