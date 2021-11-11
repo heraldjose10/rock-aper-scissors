@@ -21,25 +21,92 @@ function playRound(playerSelection, computerSelection) {
         return ['Computer won this round', 0, 1];
     }
 }
+let playerScore = 0;
+let computerScore = 0;
+let roundNumber = 1;
+let maxScore = 5;
 
-function playGame(maxScore) {
+function playGame(e) {
 
-    let playerScore = 0;
-    let computerScore = 0;
-
-    while (playerScore < maxScore && computerScore < maxScore) {
-
-        // let playerSelection = prompt('rock, paper or scissors?');
+    if (playerScore < maxScore && computerScore < maxScore) {
         let computerSelection = getComputerSelection();
+        let playerSelection = e.target.alt;
 
         let result = playRound(playerSelection, computerSelection);
-        console.log(result[0]);
-
         playerScore += result[1];
         computerScore += result[2];
+        roundNumber += 1;
+        showRoundNumber();
+        greetplayer();
+        showChoiceAndRoundWinner(playerSelection, computerSelection, result[0]);
+    }
+    if(computerScore==5 || playerScore==5) {
+        setTimeout(showResults, 500);
     }
 
-    playerScore == maxScore ? console.log('You won the GAME!!') : console.log('You failed! Computer won!');
+
 }
 
-playGame(3);
+const playGameButton = document.querySelector('#startGameButton');
+playGameButton.addEventListener('click', setGameStage);
+
+function setGameStage() {
+
+    const playerName = (() => {
+        // immediatly invoked function expression
+        const playNameInput = document.querySelector('#playerName');
+        return playNameInput.value;
+    })();
+
+    
+    showRoundNumber();
+
+    greetplayer(playerName);
+
+    const startScreen = document.querySelector('.player-info');
+    startScreen.remove();
+
+    const main = document.querySelector('.main');
+    main.classList.add('game-screen-main');
+
+    const gameArea = document.querySelector('.game-area');
+    gameArea.style.display = 'flex';
+}
+
+function showRoundNumber() {
+    const mainHeading = document.querySelector('.game-heading');
+    mainHeading.textContent = `Round ${roundNumber}`;
+    mainHeading.style.color = 'rgb(215 184 136)';
+}
+
+function greetplayer(playerName = null) {
+
+    const greetingPTag = document.querySelector('.player-text').querySelectorAll('p')[2];
+
+    if(roundNumber===1){
+        greetingPTag.textContent = `time to make your choice ${playerName}!!`;
+    }
+    else{
+        let playerTextDiv = document.querySelector('.player-text');
+        greetingPTag.textContent = `your score:${playerScore} \n computer score:${computerScore}`
+    }
+    
+}
+
+const gameChoices = Array.from(document.getElementsByClassName('player-area')[0].querySelectorAll('img'));
+gameChoices.forEach(element => {
+    element.addEventListener('click', playGame);
+});
+
+function showResults(){
+    playerScore == maxScore ? alert('You won the GAME!!') : alert('You failed! Computer won!');
+}
+
+function showChoiceAndRoundWinner(playerChoice, computerChoice, resultText){
+
+    const choicesPTag = document.querySelector('.player-text').querySelectorAll('p')[0];
+    choicesPTag.textContent = `your chose ${playerChoice} & computer chose ${computerChoice}`;
+    
+    const roundWinnerPTag = document.querySelector('.player-text').querySelectorAll('p')[1];
+    roundWinnerPTag.textContent = resultText;
+}
