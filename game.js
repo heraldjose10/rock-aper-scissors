@@ -81,7 +81,7 @@ function showRoundNumber() {
 
 function greetplayer(playerName = null) {
 
-    const greetingPTag = document.querySelector('.player-text').querySelectorAll('p')[2];
+    const greetingPTag = document.querySelector('.player-text').querySelectorAll('p')[0];
 
     if(roundNumber===1){
         greetingPTag.textContent = `time to make your choice ${playerName}!!`;
@@ -104,9 +104,9 @@ function showResults(){
 
 function showChoiceAndRoundWinner(playerChoice, computerChoice, resultText){
 
-    const choicesPTag = document.querySelector('.player-text').querySelectorAll('p')[0];
+    const choicesPTag = document.querySelector('.player-text').querySelectorAll('p')[1];
     choicesPTag.textContent = `your chose ${playerChoice} & computer chose ${computerChoice}`;
     
-    const roundWinnerPTag = document.querySelector('.player-text').querySelectorAll('p')[1];
+    const roundWinnerPTag = document.querySelector('.player-text').querySelectorAll('p')[2];
     roundWinnerPTag.textContent = resultText;
 }
